@@ -1,5 +1,4 @@
 const Koa = require('koa');
-const Router = require('koa-router');
 const static = require('koa-static');
 const path = require('path');
 const nunjucks = require('koa-nunjucks-2');
@@ -8,11 +7,9 @@ const mongoose = require('mongoose');
 const {adminIndexRouter, adminLoginRouter} = require('./router/adminRouter');
 
 const {indexRouter, detailRouter, listRouter} = require('./router');
-// const indexRouter = require('./router')
 
 
 const app = new Koa();
-const router = new Router();
 
 // 静态资源
 app.use(static(path.resolve(__dirname, './static' )));
@@ -25,10 +22,6 @@ app.use(nunjucks({
     }
   }))
 
-
-// router.get('/index', async (ctx, next) => {
-//     await ctx.render('index')
-// })
 
 // // 数据库连接
 // mongoose.connect('mongoose://localhost:27017/alibaixiu',  { useNewUrlParser: true, useCreateIndex: true})
